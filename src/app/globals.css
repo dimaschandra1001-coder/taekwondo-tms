@@ -1,0 +1,56 @@
+@import "tailwindcss";
+
+:root {
+  --background: #000000;
+  --foreground: #ffffff;
+  --sidebar-bg: #191c24;
+  --card-bg: #191c24;
+  --border-color: #2c2e33;
+  --secondary-text: #6c7293;
+}
+
+body {
+  color: var(--foreground);
+  background: var(--background);
+  font-family: 'Poppins', sans-serif;
+}
+
+/* Corona Custom Scrollbar */
+.custom-scrollbar::-webkit-scrollbar {
+  width: 4px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: #191c24;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: #2c2e33;
+  border-radius: 10px;
+}
+
+/* Corona Border Utilities */
+.corona-border {
+  border: 1px solid #2c2e33;
+}
+
+/* Reset focus ring for corona style */
+input:focus, select:focus {
+  border-color: #0090e7 !important;
+}
+/* Global Print Utilities */
+@media print {
+  .no-print {
+    display: none !important;
+  }
+  .print-reset-margin {
+    margin-left: 0 !important;
+  }
+  .print-no-padding {
+    padding: 0 !important;
+  }
+  body, html {
+    background: white !important;
+    color: black !important;
+  }
+}
