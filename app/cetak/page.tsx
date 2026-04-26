@@ -60,7 +60,7 @@ const PrintTreeLeft = ({ matchId, matchMap, childrenMap }: any) => {
             {/* Centered fork for staggered look */}
             <path d="M -0.5,25 H 50 V 75 H -0.5 M 50,50 H 100.5" stroke="black" strokeWidth="1.5pt" fill="none" vectorEffect="non-scaling-stroke" strokeLinecap="square" />
          </svg>
-         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-white px-2 py-0.5 text-[10px] font-black z-20" style={{ border: '1.5pt solid black' }}>
+         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-white px-2 py-0.5 text-[10px] font-black z-[50] text-black" style={{ border: '1.5pt solid black', WebkitPrintColorAdjust: 'exact', colorAdjust: 'exact' }}>
             {match.noPartai}
          </div>
       </div>
@@ -81,7 +81,7 @@ const PrintTreeRight = ({ matchId, matchMap, childrenMap }: any) => {
             {/* Centered fork for staggered look */}
             <path d="M 100.5,25 H 50 V 75 H 100.5 M 50,50 H -0.5" stroke="black" strokeWidth="1.5pt" fill="none" vectorEffect="non-scaling-stroke" strokeLinecap="square" />
          </svg>
-         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-white px-2 py-0.5 text-[10px] font-black z-20" style={{ border: '1.5pt solid black' }}>
+         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-white px-2 py-0.5 text-[10px] font-black z-[50] text-black" style={{ border: '1.5pt solid black', WebkitPrintColorAdjust: 'exact', colorAdjust: 'exact' }}>
             {match.noPartai}
          </div>
       </div>
@@ -196,7 +196,7 @@ const PrintGraphicBracket = ({ groupName, matches }: { groupName: string, matche
             <svg className="absolute inset-0 w-full h-full pointer-events-none overflow-visible" preserveAspectRatio="none" viewBox="0 0 100 100" shapeRendering="crispEdges">
               <line x1="-5" y1="50" x2="105" y2="50" stroke="black" strokeWidth="1.5pt" vectorEffect="non-scaling-stroke" />
             </svg>
-            <div className="relative bg-white px-4 py-2 text-[12px] font-black z-20 text-black mx-auto" style={{ border: '1.5pt solid black' }}>
+            <div className="relative bg-white px-4 py-2 text-[12px] font-black z-[50] text-black mx-auto" style={{ border: '1.5pt solid black', WebkitPrintColorAdjust: 'exact', colorAdjust: 'exact' }}>
               {rootMatch.noPartai}
               <div className="absolute -top-7 left-1/2 -translate-x-1/2 text-[10px] font-bold uppercase tracking-widest text-black whitespace-nowrap">FINAL</div>
             </div>
@@ -446,6 +446,7 @@ export default function Page() {
             padding: 0 !important;
             -webkit-print-color-adjust: exact !important;
             print-color-adjust: exact !important;
+            color-adjust: exact !important;
             image-rendering: -webkit-optimize-contrast !important;
             shape-rendering: crispEdges !important;
           }
