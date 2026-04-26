@@ -17,10 +17,11 @@ import {
   ListFilter
 } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
+import Link from 'next/link';
 
 const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbzIUOsZAioE_cPROrHs1LmYB83pIjyeorbK8SfDLgUQXYsU-jYjdf2HNKJOjOCucl_q7Q/exec";
 
-export default function InputPeserta() {
+export default function Page() {
   const [loading, setLoading] = useState(false);
   const [fetchingRef, setFetchingRef] = useState(true);
   const [fetchingPeserta, setFetchingPeserta] = useState(true);
@@ -38,6 +39,8 @@ export default function InputPeserta() {
     fetchRef();
     fetchPeserta();
   }, []);
+
+  if (!refData || !pesertaData) return null;
 
   // TECHNICAL FIX: DYNAMIC UNIQUE CLUB COUNTING
   const totalUniqueClubs = useMemo(() => {
@@ -230,7 +233,12 @@ export default function InputPeserta() {
 
       {/* FORM SECTION */}
       <div className="space-y-6">
-        <h2 className="text-xl font-bold text-white uppercase tracking-tight italic">Registrasi Peserta</h2>
+        <div className="flex items-center justify-between">
+          <h2 className="text-xl font-bold text-white uppercase tracking-tight italic">Registrasi Peserta</h2>
+          <Link href="/generate" className="text-[#8f5fe8] text-[10px] font-black uppercase tracking-widest hover:underline flex items-center gap-2">
+            Lanjut ke Generate <Activity size={14} />
+          </Link>
+        </div>
         <div className="bg-[#191c24] border border-[#2c2e33] rounded-sm shadow-xl overflow-hidden">
           <div className="p-6 border-b border-[#2c2e33] flex items-center justify-between bg-[#191c24]">
             <h4 className="text-sm font-medium text-white italic tracking-wide">Formulir Input Data</h4>

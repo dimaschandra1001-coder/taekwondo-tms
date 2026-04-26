@@ -11,15 +11,17 @@ import {
   Trophy,
   Activity,
   CheckCircle2,
-  GitMerge
+  GitMerge,
+  Printer
 } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
+import Link from 'next/link';
 
 const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbzIUOsZAioE_cPROrHs1LmYB83pIjyeorbK8SfDLgUQXYsU-jYjdf2HNKJOjOCucl_q7Q/exec";
 
 // --- MAIN PAGE COMPONENT ---
 
-export default function GenerateBagan() {
+export default function Page() {
   const [pesertaData, setPesertaData] = useState<any[]>([]);
   const [matches, setMatches] = useState<any[]>([]);
   const [loading, setLoading] = useState(true);
@@ -117,6 +119,8 @@ export default function GenerateBagan() {
   useEffect(() => {
     fetchData();
   }, []);
+
+  if (!pesertaData) return null;
 
   const totalParticipants = pesertaData.length;
   const totalUniqueClubs = useMemo(() => {
@@ -585,6 +589,11 @@ export default function GenerateBagan() {
         <div className="relative z-10">
           <h1 className="text-3xl font-black text-white uppercase tracking-tighter italic">Graphic Bracket Engine</h1>
           <p className="text-[#6c7293] text-sm mt-2 max-w-xl font-medium">Sistem kecerdasan buatan untuk mengolah data atlet menjadi Graphic Bracket eliminasi tunggal secara sentral. Mendukung official BYE otomatis.</p>
+          <div className="mt-4 flex gap-4">
+             <Link href="/cetak" className="text-[#ffab00] text-[10px] font-black uppercase tracking-widest flex items-center gap-1 hover:underline">
+               <Printer size={12} /> Buka Halaman Cetak →
+             </Link>
+          </div>
         </div>
 
         <div className="flex items-center gap-4 relative z-10">

@@ -231,7 +231,7 @@ const PrintGraphicBracket = ({ groupName, matches }: { groupName: string, matche
   );
 };
 
-export default function CetakBaganPage() {
+export default function Page() {
   const [data, setData] = useState<any[]>([]);
   const [loading, setLoading] = useState(true);
   const [selectedCategory, setSelectedCategory] = useState("Semua Kategori");
@@ -253,6 +253,8 @@ export default function CetakBaganPage() {
   useEffect(() => {
     fetchData();
   }, []);
+
+  if (!data) return null;
 
   const groupedData = useMemo(() => {
     const categoryOrder = ["PRA CADET", "CADET", "JUNIOR", "SENIOR"];

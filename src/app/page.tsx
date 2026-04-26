@@ -10,10 +10,11 @@ import {
   ListFilter
 } from 'lucide-react';
 import { motion } from 'framer-motion';
+import Link from 'next/link';
 
 const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwc5-z0n860AsBB77KLHyYCxUNarnqcsH2GuAe5EiodL6DL44hS_de13x-N1W7hOqGvIA/exec";
 
-export default function Dashboard() {
+export default function Page() {
   const [pesertaData, setPesertaData] = useState<any[]>([]);
   const [loading, setLoading] = useState(true);
   const [refreshing, setRefreshing] = useState(false);
@@ -58,6 +59,8 @@ export default function Dashboard() {
 
   const totalParticipants = pesertaData.length;
 
+  if (!pesertaData) return null;
+
   return (
     <div className="space-y-8">
       
@@ -66,6 +69,16 @@ export default function Dashboard() {
         <div>
           <h2 className="text-2xl font-bold text-white tracking-tight italic">Dashboard Bagan</h2>
           <p className="text-[#6c7293] text-xs font-bold uppercase tracking-widest mt-1">Manage Bagan Turnamen Taekwondo</p>
+        </div>
+        <div className="flex gap-3">
+          <Link href="/peserta" className="bg-[#00d25b] text-white px-6 py-2 rounded-sm text-[10px] font-black uppercase tracking-widest hover:bg-[#00b34d] transition-all flex items-center gap-2">
+            <Users size={14} />
+            Input Peserta
+          </Link>
+          <Link href="/generate" className="bg-[#8f5fe8] text-white px-6 py-2 rounded-sm text-[10px] font-black uppercase tracking-widest hover:bg-[#7a4cd1] transition-all flex items-center gap-2">
+            <Activity size={14} />
+            Generate
+          </Link>
         </div>
       </div>
 
