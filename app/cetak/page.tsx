@@ -16,7 +16,7 @@ const PrintAthleteLeft = ({ athlete }: { athlete: any }) => (
       <line x1="0" y1="50" x2="100" y2="50" stroke="black" strokeWidth="1.5" vectorEffect="non-scaling-stroke" />
     </svg>
     <div className="relative z-10 pl-2">
-      <div className="text-[12px] font-black uppercase truncate leading-none text-black" style={{color: athlete?.nama?.startsWith('Pemenang') ? '#9ca3af' : undefined}}>{athlete?.nama || "TBD"}</div>
+      <div className="text-[12px] font-black uppercase truncate leading-none text-black" style={{ color: athlete?.nama?.startsWith('Pemenang') ? '#9ca3af' : undefined }}>{athlete?.nama || "TBD"}</div>
       <div className="text-[9px] text-gray-700 uppercase truncate leading-none mt-0.5">{athlete?.klub !== "-" ? athlete?.klub : ""}</div>
     </div>
   </div>
@@ -29,7 +29,7 @@ const PrintAthleteRight = ({ athlete }: { athlete: any }) => (
       <line x1="0" y1="50" x2="100" y2="50" stroke="black" strokeWidth="1.5" vectorEffect="non-scaling-stroke" />
     </svg>
     <div className="relative z-10 pr-2 text-right">
-      <div className="text-[12px] font-black uppercase truncate leading-none text-black" style={{color: athlete?.nama?.startsWith('Pemenang') ? '#9ca3af' : undefined}}>{athlete?.nama || "TBD"}</div>
+      <div className="text-[12px] font-black uppercase truncate leading-none text-black" style={{ color: athlete?.nama?.startsWith('Pemenang') ? '#9ca3af' : undefined }}>{athlete?.nama || "TBD"}</div>
       <div className="text-[9px] text-gray-700 uppercase truncate leading-none mt-0.5">{athlete?.klub !== "-" ? athlete?.klub : ""}</div>
     </div>
   </div>
@@ -39,33 +39,33 @@ const PrintTreeLeft = ({ matchId, matchMap, childrenMap }: any) => {
   const match = matchMap.get(matchId);
   if (!match) return null;
   const children = childrenMap.get(matchId) || [];
-  
+
   return (
     <div className="flex items-stretch" style={{ boxSizing: 'border-box' }}>
       {/* 1. Inputs (Children) */}
       <div className="flex flex-col justify-center shrink-0 border-box">
         {children.length > 0 ? (
-           <div className="flex flex-col justify-center">
-             <PrintTreeLeft matchId={children[0]} matchMap={matchMap} childrenMap={childrenMap} />
-             <PrintTreeLeft matchId={children[1]} matchMap={matchMap} childrenMap={childrenMap} />
-           </div>
+          <div className="flex flex-col justify-center">
+            <PrintTreeLeft matchId={children[0]} matchMap={matchMap} childrenMap={childrenMap} />
+            <PrintTreeLeft matchId={children[1]} matchMap={matchMap} childrenMap={childrenMap} />
+          </div>
         ) : (
-           <div className="grid grid-rows-2 h-[112px]">
-             <PrintAthleteLeft athlete={match.blue} />
-             <PrintAthleteLeft athlete={match.red} />
-           </div>
+          <div className="grid grid-rows-2 h-[112px]">
+            <PrintAthleteLeft athlete={match.blue} />
+            <PrintAthleteLeft athlete={match.red} />
+          </div>
         )}
       </div>
-      
+
       {/* 2. Junction Fork */}
       <div className="w-[15mm] relative shrink-0 flex items-stretch border-box">
-         {/* Fork: top arm at y=25, bottom arm at y=75, vertical bar connects them, output exits right at y=50 */}
-         <svg className="absolute inset-0 w-full h-full pointer-events-none overflow-visible" viewBox="0 0 100 100" preserveAspectRatio="none">
-            <path d="M 0 25 L 50 25 L 50 75 L 0 75 M 50 50 L 100 50" stroke="black" strokeWidth="1.5" fill="none" vectorEffect="non-scaling-stroke" />
-         </svg>
-         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-white px-2 py-0.5 text-[10px] font-black z-[50] text-black border border-black">
-            {match.noPartai}
-         </div>
+        {/* Fork: top arm at y=25, bottom arm at y=75, vertical bar connects them, output exits right at y=50 */}
+        <svg className="absolute inset-0 w-full h-full pointer-events-none overflow-visible" viewBox="0 0 100 100" preserveAspectRatio="none">
+          <path d="M 0 25 L 50 25 L 50 75 L 0 75 M 50 50 L 100 50" stroke="black" strokeWidth="1.5" fill="none" vectorEffect="non-scaling-stroke" />
+        </svg>
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-white px-2 py-0.5 text-[10px] font-black z-[50] text-black border border-black">
+          {match.noPartai}
+        </div>
       </div>
     </div>
   );
@@ -75,32 +75,32 @@ const PrintTreeRight = ({ matchId, matchMap, childrenMap }: any) => {
   const match = matchMap.get(matchId);
   if (!match) return null;
   const children = childrenMap.get(matchId) || [];
-  
+
   return (
     <div className="flex items-stretch" style={{ boxSizing: 'border-box' }}>
       {/* 1. Junction Fork */}
       <div className="w-[15mm] relative shrink-0 flex items-stretch border-box">
-         {/* Fork: top arm at y=25, bottom arm at y=75, vertical bar connects them, output exits left at y=50 */}
-         <svg className="absolute inset-0 w-full h-full pointer-events-none overflow-visible" viewBox="0 0 100 100" preserveAspectRatio="none">
-            <path d="M 100 25 L 50 25 L 50 75 L 100 75 M 50 50 L 0 50" stroke="black" strokeWidth="1.5" fill="none" vectorEffect="non-scaling-stroke" />
-         </svg>
-         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-white px-2 py-0.5 text-[10px] font-black z-[50] text-black border border-black">
-            {match.noPartai}
-         </div>
+        {/* Fork: top arm at y=25, bottom arm at y=75, vertical bar connects them, output exits left at y=50 */}
+        <svg className="absolute inset-0 w-full h-full pointer-events-none overflow-visible" viewBox="0 0 100 100" preserveAspectRatio="none">
+          <path d="M 100 25 L 50 25 L 50 75 L 100 75 M 50 50 L 0 50" stroke="black" strokeWidth="1.5" fill="none" vectorEffect="non-scaling-stroke" />
+        </svg>
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-white px-2 py-0.5 text-[10px] font-black z-[50] text-black border border-black">
+          {match.noPartai}
+        </div>
       </div>
 
       {/* 2. Inputs (Children) */}
       <div className="flex flex-col justify-center shrink-0 border-box">
         {children.length > 0 ? (
-           <div className="flex flex-col justify-center">
-             <PrintTreeRight matchId={children[0]} matchMap={matchMap} childrenMap={childrenMap} />
-             <PrintTreeRight matchId={children[1]} matchMap={matchMap} childrenMap={childrenMap} />
-           </div>
+          <div className="flex flex-col justify-center">
+            <PrintTreeRight matchId={children[0]} matchMap={matchMap} childrenMap={childrenMap} />
+            <PrintTreeRight matchId={children[1]} matchMap={matchMap} childrenMap={childrenMap} />
+          </div>
         ) : (
-           <div className="grid grid-rows-2 h-[112px]">
-             <PrintAthleteRight athlete={match.blue} />
-             <PrintAthleteRight athlete={match.red} />
-           </div>
+          <div className="grid grid-rows-2 h-[112px]">
+            <PrintAthleteRight athlete={match.blue} />
+            <PrintAthleteRight athlete={match.red} />
+          </div>
         )}
       </div>
     </div>
@@ -117,41 +117,41 @@ const PrintGraphicBracket = ({ groupName, matches }: { groupName: string, matche
 
   const matchMap = new Map();
   sortedMatches.forEach(m => matchMap.set((m.noPartai || "").toString().trim(), m));
-  
+
   // 2. Mathematically reconstruct the bracket hierarchy (Bottom-Up Binary Tree)
-  const S = sortedMatches.length + 1; 
+  const S = sortedMatches.length + 1;
   const numR1 = S / 2;
-  
+
   const childrenMap = new Map();
   let currentRound = sortedMatches.slice(0, numR1);
   let nextIdx = numR1;
-  
+
   while (currentRound.length > 1 && nextIdx < sortedMatches.length) {
     const nextRound = [];
     for (let i = 0; i < currentRound.length; i += 2) {
       const parent = sortedMatches[nextIdx];
       const leftChild = currentRound[i];
       const rightChild = currentRound[i + 1];
-      
+
       if (!parent) break;
-      
+
       const parentId = (parent.noPartai || "").toString().trim();
       const leftId = (leftChild?.noPartai || "").toString().trim();
       const rightId = (rightChild?.noPartai || "").toString().trim();
-      
+
       childrenMap.set(parentId, [leftId, rightId]);
       nextRound.push(parent);
       nextIdx++;
     }
     currentRound = nextRound;
   }
-  
+
   // Root is the last match
   const rootMatch = sortedMatches[sortedMatches.length - 1];
   if (!rootMatch) return null;
 
   const [catName, gen, klst] = groupName.split('|').map((s: string) => s.trim());
-  
+
   let athleteSet = new Set();
   matches.forEach(m => {
     if (m.blue?.nama && !m.blue.nama.toUpperCase().startsWith("PEMENANG ") && m.blue.nama.toUpperCase() !== "BYE") {
@@ -170,10 +170,10 @@ const PrintGraphicBracket = ({ groupName, matches }: { groupName: string, matche
         <div className="w-full flex justify-between items-start mb-4 border-b-[3px] border-black pb-4 shrink-0">
           <div className="flex-1">
             <div className="flex items-center gap-3 mb-1">
-               <div className="bg-black text-white px-2 py-0.5 text-[10px] font-black uppercase tracking-widest italic">Official</div>
-               <h1 className="text-2xl font-black uppercase tracking-tight text-black leading-none">
-                 {catName} <span className="mx-2 text-gray-300">|</span> {gen} <span className="mx-2 text-gray-300">|</span> {klst}
-               </h1>
+              <div className="bg-black text-white px-2 py-0.5 text-[10px] font-black uppercase tracking-widest italic">Official</div>
+              <h1 className="text-2xl font-black uppercase tracking-tight text-black leading-none">
+                {catName} <span className="mx-2 text-gray-300">|</span> {gen} <span className="mx-2 text-gray-300">|</span> {klst}
+              </h1>
             </div>
             <p className="text-[10px] font-bold text-gray-500 uppercase tracking-[0.3em]">Taekwondo Tournament Bracket System</p>
           </div>
@@ -187,39 +187,39 @@ const PrintGraphicBracket = ({ groupName, matches }: { groupName: string, matche
             </div>
           </div>
         </div>
-        
+
         {/* THE TREE */}
         <div className="flex justify-center items-center w-full relative overflow-visible py-8">
-           <div className="flex items-center justify-center scale-[1.0] origin-center w-full">
-             {/* LEFT TREE */}
-             <div className="flex-1 flex justify-end">
-               {childrenMap.get((rootMatch.noPartai || "").toString().trim())?.[0] ? (
-                 <PrintTreeLeft matchId={childrenMap.get((rootMatch.noPartai || "").toString().trim())[0]} matchMap={matchMap} childrenMap={childrenMap} />
-               ) : (
-                 <div className="flex items-center"><PrintAthleteLeft athlete={rootMatch.blue} /></div>
-               )}
-             </div>
-             
-             {/* CENTER FINAL */}
-             <div className="flex-none z-10 relative flex items-center mx-1 min-w-[30mm] border-box">
-                <svg className="absolute inset-0 w-full h-full pointer-events-none overflow-visible" viewBox="0 0 100 100" preserveAspectRatio="none">
-                  <line x1="-10" y1="50" x2="110" y2="50" stroke="black" strokeWidth="2" vectorEffect="non-scaling-stroke" />
-                </svg>
-                <div className="relative bg-white px-4 py-2 text-[12px] font-black z-[50] text-black mx-auto border-2 border-black">
-                  {rootMatch.noPartai}
-                  <div className="absolute -top-7 left-1/2 -translate-x-1/2 text-[10px] font-black uppercase tracking-[0.2em] text-black whitespace-nowrap bg-white px-2">FINAL</div>
-                </div>
-             </div>
-             
-             {/* RIGHT TREE */}
-             <div className="flex-1 flex justify-start">
-               {childrenMap.get((rootMatch.noPartai || "").toString().trim())?.[1] ? (
-                 <PrintTreeRight matchId={childrenMap.get((rootMatch.noPartai || "").toString().trim())[1]} matchMap={matchMap} childrenMap={childrenMap} />
-               ) : (
-                 <div className="flex items-center"><PrintAthleteRight athlete={rootMatch.red} /></div>
-               )}
-             </div>
-           </div>
+          <div className="flex items-center justify-center scale-[1.0] origin-center w-full">
+            {/* LEFT TREE */}
+            <div className="flex-1 flex justify-end">
+              {childrenMap.get((rootMatch.noPartai || "").toString().trim())?.[0] ? (
+                <PrintTreeLeft matchId={childrenMap.get((rootMatch.noPartai || "").toString().trim())[0]} matchMap={matchMap} childrenMap={childrenMap} />
+              ) : (
+                <div className="flex items-center"><PrintAthleteLeft athlete={rootMatch.blue} /></div>
+              )}
+            </div>
+
+            {/* CENTER FINAL */}
+            <div className="flex-none z-10 relative flex items-center mx-1 min-w-[30mm] border-box">
+              <svg className="absolute inset-0 w-full h-full pointer-events-none overflow-visible" viewBox="0 0 100 100" preserveAspectRatio="none">
+                <line x1="-10" y1="50" x2="110" y2="50" stroke="black" strokeWidth="2" vectorEffect="non-scaling-stroke" />
+              </svg>
+              <div className="relative bg-white px-4 py-2 text-[12px] font-black z-[50] text-black mx-auto border-2 border-black">
+                {rootMatch.noPartai}
+                <div className="absolute -top-7 left-1/2 -translate-x-1/2 text-[10px] font-black uppercase tracking-[0.2em] text-black whitespace-nowrap bg-white px-2">FINAL</div>
+              </div>
+            </div>
+
+            {/* RIGHT TREE */}
+            <div className="flex-1 flex justify-start">
+              {childrenMap.get((rootMatch.noPartai || "").toString().trim())?.[1] ? (
+                <PrintTreeRight matchId={childrenMap.get((rootMatch.noPartai || "").toString().trim())[1]} matchMap={matchMap} childrenMap={childrenMap} />
+              ) : (
+                <div className="flex items-center"><PrintAthleteRight athlete={rootMatch.red} /></div>
+              )}
+            </div>
+          </div>
         </div>
       </div>
 
@@ -290,7 +290,7 @@ export default function Page() {
         const clone = page.cloneNode(true) as HTMLElement;
         // Reset container style for iframe
         clone.style.cssText = 'width: 277mm; min-height: 190mm; background: #fff; margin: 0; padding: 0; break-inside: avoid;';
-        
+
         return `
           <section style="
             display: block; 
@@ -383,7 +383,7 @@ export default function Page() {
       };
 
       const response = await fetchWithTimeout(`${SCRIPT_URL}?sheet=Bagan_Tanding&t=${new Date().getTime()}`);
-      
+
       if (!response.ok) {
         throw new Error(`HTTP Error! Status: ${response.status}`);
       }
@@ -408,7 +408,7 @@ export default function Page() {
 
   const groupedData = useMemo(() => {
     const categoryOrder = ["PRA CADET", "CADET", "JUNIOR", "SENIOR"];
-    
+
     const getCatRank = (cat: string) => {
       const c = (cat || "").toString().toUpperCase();
       if (c.includes("PRA CADET")) return 1;
@@ -423,7 +423,7 @@ export default function Page() {
       if (g.includes("FEMALE") || g.includes("PUTRI") || g.includes("PI")) return 1;
       return 2;
     };
-    
+
     const getWeightValue = (w: string) => {
       const match = (w || "").toString().match(/\d+/);
       return match ? parseInt(match[0]) : 999;
@@ -434,7 +434,7 @@ export default function Page() {
       const cat = (m.kategori || m.Kategori || "-").toString().toUpperCase();
       const gen = (m.gender || m.Gender || "-").toString().toUpperCase();
       const klst = (m["kelas tanding"] || m["Kelas Tanding"] || m.kelastanding || "-").toString().toUpperCase();
-      
+
       if (selectedCategory !== "Semua Kategori" && !cat.includes(selectedCategory.toUpperCase())) return;
 
       const key = `${cat}|${gen}|${klst}`;
@@ -473,7 +473,7 @@ export default function Page() {
     return finalizedGroups.sort((a, b) => {
       const [catA, genA, kelasA] = a.key.split('|');
       const [catB, genB, kelasB] = b.key.split('|');
-      
+
       const rA = getCatRank(catA);
       const rB = getCatRank(catB);
       if (rA !== rB) return rA - rB;
@@ -520,7 +520,7 @@ export default function Page() {
           <div className="flex items-center gap-4 flex-1 justify-end">
             <div className="relative flex-1 max-w-[250px]">
               <Filter className="absolute left-3 top-1/2 -translate-y-1/2 text-[#8f5fe8]" size={14} />
-              <select 
+              <select
                 value={selectedCategory}
                 onChange={(e) => setSelectedCategory(e.target.value)}
                 className="w-full bg-black border border-[#2c2e33] text-white text-[10px] font-bold uppercase tracking-widest py-3 pl-10 pr-4 rounded-sm focus:border-[#8f5fe8] outline-none transition-all cursor-pointer appearance-none"
@@ -533,7 +533,7 @@ export default function Page() {
               </select>
             </div>
 
-            <button 
+            <button
               onClick={handleDownloadPDF}
               disabled={exporting}
               className="group flex items-center gap-3 bg-[#8f5fe8] text-white px-8 py-3 rounded-sm text-[10px] font-black uppercase tracking-widest hover:bg-[#7a4cd1] transition-all shadow-[0_8px_30px_rgb(143,95,232,0.3)] active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed print:hidden"
@@ -545,7 +545,7 @@ export default function Page() {
                 </>
               ) : (
                 <>
-                  <Printer size={16} className="group-hover:translate-y-0.5 transition-transform" /> 
+                  <Printer size={16} className="group-hover:translate-y-0.5 transition-transform" />
                   Cetak Bagan (PDF)
                 </>
               )}
@@ -573,7 +573,7 @@ export default function Page() {
                   <span className="text-[#6c7293] text-[9px] font-bold uppercase tracking-widest">{group.key}</span>
                 </div>
                 <div className="bracket-page-view bg-white text-black shadow-2xl rounded-sm transition-transform duration-500 group-hover:scale-[1.01] w-full max-w-[297mm] mx-auto border border-gray-200">
-                     <PrintGraphicBracket groupName={group.key} matches={group.matches} />
+                  <PrintGraphicBracket groupName={group.key} matches={group.matches} />
                 </div>
               </div>
             ))}
