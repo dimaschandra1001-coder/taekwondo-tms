@@ -19,7 +19,7 @@ import {
 import { motion, AnimatePresence } from 'framer-motion';
 import Link from 'next/link';
 
-const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbzIUOsZAioE_cPROrHs1LmYB83pIjyeorbK8SfDLgUQXYsU-jYjdf2HNKJOjOCucl_q7Q/exec";
+const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwc5-z0n860AsBB77KLHyYCxUNarnqcsH2GuAe5EiodL6DL44hS_de13x-N1W7hOqGvIA/exec";
 
 export default function Page() {
   const [loading, setLoading] = useState(false);
